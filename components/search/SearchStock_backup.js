@@ -1,29 +1,29 @@
-import React, { Component, useState, useEffect} from "react";
+import React, { Component, useState} from "react";
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput } from "react-native";
-//import axios from "axios";
-import FetchData from "./FetchData"
+import axios from "axios";
 
-
-
-export default function SearchStock() {
-  const [searchText, setSearchText] = useState("AAPL");
+export default function SearchStock({ setSelectedStock, selectedStock }) {
+  const [searchText, setSearchText] = useState("");
   const [displayText, setDisplayText] = useState("");
-  const [stockData,setStockData] = useState([]);
+  const [stockData, setStockData] = useState([]);
 
-  const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${searchText}&apikey=2DMYNF09LS0LCIKD`;
-
-  const getData = async () => {
-    const result = await fetch(url);
-    console.log(result);
-    const data = await result.json();
-    console.log(data);
-    setStockData(data);
-  }
-
+  const fetchStockData = async () => {
+    try {
+      const stockRes = await axios.get(
+        	"http://dummy.restapiexample.com/api/v1/employees"
+      );
+      setStockData(stockRes.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const submit = async () => {
-    searchText && getData();
+    searchText && (await fetchStockData(searchText));
     setSearchText("");
+
+    setDisplayText(searchText);
+    
   };
 
   return (
@@ -36,18 +36,22 @@ export default function SearchStock() {
           value={searchText}
         />
       </View>
+
       <View style={{ flex: 1 }}>
         <TouchableOpacity style={styles.button} onPress={() => submit()}  >
           <Text style = {styles.buttonText}> Search </Text>
         </TouchableOpacity>
       </View>
 
-      <Text> {"\n\n\n\n"} {JSON.stringify(stockData,null,2)} </Text>
+
+      <Text> {"\n\n\n\n"} {displayText} </Text>
+
 
     </View>
-  );
 
+  );
 }
+
 
 const styles = StyleSheet.create({
   textInput: {
@@ -70,3 +74,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   }
 });
+
+{/*`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${searchText}&apikey=demo`*/}

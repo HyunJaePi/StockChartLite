@@ -6,7 +6,7 @@ import SearchStock from "../search/SearchStock";
 import Chart from "../stock/Chart";
 
 export default function WatchListScreen() {
-  const [selectedStock, setSelectedStock] = useState({ data: []});
+  const [selectedStock, setSelectedStock] = useState([]);
 
   return (
     <View style={styles.container}>
