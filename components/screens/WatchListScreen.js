@@ -1,25 +1,23 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { View, Text, StyleSheet, } from "react-native";
 
 import SearchStock from "../search/SearchStock";
-import Chart from "../stock/Chart";
+
 
 export default function WatchListScreen() {
-  const [selectedStock, setSelectedStock] = useState([]);
 
   return (
     <View style={styles.container}>
-      <SearchStock setSelectedStock={setSelectedStock} selectedStock={selectedStock} />
-      {/* <Chart selectedStock={selectedStock} /> */}
+      <SearchStock />
     </View>
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 0,
-    //justifyContent: "space-between",
-    backgroundColor: "white",
+    justifyContent: "space-between",
+    backgroundColor: "black",
   },
 });

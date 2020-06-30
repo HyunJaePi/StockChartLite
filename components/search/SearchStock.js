@@ -1,34 +1,34 @@
 import React, { Component, useState, useEffect} from "react";
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput } from "react-native";
-//import axios from "axios";
-import FetchData from "./FetchData"
+import { useAsyncStorage } from '@react-native-community/async-storage';
 
+import Chart from "../charts/Chart";
 
 
 export default function SearchStock() {
+  const [data, setData] = useState([]);
   const [searchText, setSearchText] = useState("AAPL");
-  const [displayText, setDisplayText] = useState("");
-  const [stockData,setStockData] = useState([]);
-
-  const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${searchText}&apikey=2DMYNF09LS0LCIKD`;
+  const url = `https://financialmodelingprep.com/api/v3/historical-price-full/${searchText}?timeseries=5&apikey=ccc99b9c4c2a7d7bce43741669bc3e5f`;
 
   const getData = async () => {
-    const result = await fetch(url);
-    console.log(result);
-    const data = await result.json();
-    console.log(data);
-    setStockData(data);
+    const result = await fetch(url)
+    const data = await result.json()
+    setData(data)
   }
 
-
   const submit = async () => {
-    searchText && getData();
+    getData();
     setSearchText("");
   };
 
+  const clearData = async () => {
+    setSearchText("");
+    setData([]);
+  };
+
   return (
-    <View>
-      <View style={{ flex: 2 }}>
+    <View style={styles.container} >
+      <View style={{ flex: 1 }}>
         <TextInput
           onChangeText={(text) => {setSearchText(text);}}
           style={styles.textInput}
@@ -42,14 +42,30 @@ export default function SearchStock() {
         </TouchableOpacity>
       </View>
 
-      <Text> {"\n\n\n\n"} {JSON.stringify(stockData,null,2)} </Text>
-
+      <View style={{ flex: 1 }}>
+        <TouchableOpacity style={styles.button} onPress={() => clearData()}  >
+          <Text style = {styles.buttonText}> Clear </Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.chart}>
+        <Chart data={data.historical, data.symbol} />
+      </View>
     </View>
   );
 
 }
 
 const styles = StyleSheet.create({
+  container: {
+    justifyContent: "space-between",
+    backgroundColor: "white",
+
+  },
+  chart: {
+    justifyContent: "space-between",
+    backgroundColor: "white",
+    margin: 20,
+  },
   textInput: {
     flex: 1,
     justifyContent: "space-between",
@@ -62,7 +78,7 @@ const styles = StyleSheet.create({
     borderColor: '#007BFF',
     backgroundColor: '#007BFF',
     padding: 15,
-    margin: 5,
+    margin: 20,
   },
   buttonText: {
     textAlign: 'center',
@@ -70,3 +86,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   }
 });
+
+
+{/*
+<Text> {"\n\n"} {JSON.stringify(data,null,2)} </Text>
+<Text> {"\n\n"} {JSON.stringify(data["Meta Data"],null,2)} </Text>
+<View style={{ flex: 1 }}>
+  <Chart data={data} />
+
+  `https://eodhistoricaldata.com/api/eod/${searchText}.US?from=2017-01-05&to=2017-02-10&api_token=5efb2080854fa9.80707652&period=d&fmt=json`;
+</View>
+  */}
