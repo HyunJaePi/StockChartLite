@@ -1,16 +1,16 @@
 # StockChartLite
 
-## motivation:
-As a research scientist, I wanted to plot some data.
+## Motivation:
+As a scientist, I wanted to analyze and plot some publicly available data.
 This app retrieves API data of stock and displays the results.
 
-## installation
+## Installation
 npm install
 
-## to start
+## Run
 npm start
 
-##
+## Demo
 Once stock symbol is typed (e.g. AAPL, AMZN), the graph is displayed  
 
 ## Progress
