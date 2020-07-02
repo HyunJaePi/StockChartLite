@@ -3,7 +3,7 @@
 
 ## Motivation:
 As a scientist, I wanted to analyze and plot some publicly available data.
-This app retrieves API data of stock and displays the results.
+This app retrieves API data of stock and displays the result.
 
 ## Installation
 npm install
