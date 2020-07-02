@@ -1,3 +1,12 @@
+/**
+ * WatchListScreen.js -- a kind of home screen right now
+ *
+ * HyunJae Pi
+ * hyunpi@brandeis.edu
+ *
+ * last update: 7/1/2020
+ */
+
 import React from "react";
 import { View, Text, StyleSheet, } from "react-native";
 
@@ -18,6 +27,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 0,
     justifyContent: "space-between",
-    backgroundColor: "black",
+    backgroundColor: "white",
   },
 });

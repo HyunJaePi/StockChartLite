@@ -1,3 +1,12 @@
+/**
+ * Chart.js -- display a candlestick chart
+ *
+ * HyunJae Pi
+ * hyunpi@brandeis.edu
+ *
+ * last update: 7/1/2020
+ */
+
 import Echarts from "echarts-for-react"
 import React, { Component, useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
@@ -13,10 +22,15 @@ export default function Chart ({data, symbol}) {
     data.map((item) =>
       values.push([item["open"], item["close"], item["low"], item["high"]])
     );
-
   }
+  let stockName = JSON.stringify(symbol);
 
   const chartOption = {
+    title: {
+      display: true,
+      text: JSON.stringify(symbol),
+      align: "bottom",
+    },
     tooltip: {
       trigger: "axis",
       axisPointer: {

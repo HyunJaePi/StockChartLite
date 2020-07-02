@@ -1,3 +1,12 @@
+/**
+ * SearchStock.js -- search a typed stock symbol and display a chart
+ *
+ * HyunJae Pi
+ * hyunpi@brandeis.edu
+ *
+ * last update: 7/1/2020
+ */
+
 import React, { Component, useState, useEffect} from "react";
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput } from "react-native";
 import { useAsyncStorage } from '@react-native-community/async-storage';
@@ -26,6 +35,10 @@ export default function SearchStock() {
     setData([]);
   };
 
+  useEffect(() => {
+    getData();
+  })
+
   return (
     <View style={styles.container} >
       <View style={{ flex: 1 }}>
@@ -47,9 +60,20 @@ export default function SearchStock() {
           <Text style = {styles.buttonText}> Clear </Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.chart}>
-        <Chart data={data.historical, data.symbol} />
+
+{/* for debugging
+      <View style={{ flex: 1 }}>
+        <TouchableOpacity style={styles.button} onPress={() => getData()}  >
+          <Text style = {styles.buttonText}> Tests retrieve data </Text>
+        </TouchableOpacity>
       </View>
+*/}
+
+      <View style={styles.chart}>
+        <Text> {"\n\n"}</Text>
+        <Chart data={data.historical} symbol ={data.symbol} />
+      </View>
+
     </View>
   );
 
@@ -62,12 +86,12 @@ const styles = StyleSheet.create({
 
   },
   chart: {
-    justifyContent: "space-between",
+    //justifyContent: "space-between",
     backgroundColor: "white",
-    margin: 20,
+    margin: 0,
   },
   textInput: {
-    flex: 1,
+    flex: 0.8,
     justifyContent: "space-between",
     backgroundColor: "white",
     borderColor: 'gray',
@@ -84,11 +108,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
     fontWeight: 'bold',
-  }
+  },
+
 });
 
 
 {/*
+<Text> {"\n\n"} test {JSON.stringify(data.historical,null,2)} </Text>
 <Text> {"\n\n"} {JSON.stringify(data,null,2)} </Text>
 <Text> {"\n\n"} {JSON.stringify(data["Meta Data"],null,2)} </Text>
 <View style={{ flex: 1 }}>

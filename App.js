@@ -1,5 +1,10 @@
 /**
- * StockChartLite -- stock chart w/ Bolliger bands
+ * StockChartLite -- display different charts of a given stock symbol
+ *
+ * HyunJae Pi
+ * hyunpi@brandeis.edu
+ *
+ * last update: 7/1/2020
  */
 
 
@@ -38,7 +43,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F3F3F3',
+    backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
   },
