@@ -1,4 +1,5 @@
 # StockChartLite
+## Note: limited retrieval of stock API is allowed per day (free account)
 
 ## Motivation:
 As a scientist, I wanted to analyze and plot some publicly available data.
