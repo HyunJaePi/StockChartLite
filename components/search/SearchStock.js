@@ -12,12 +12,13 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput } from 
 import { useAsyncStorage } from '@react-native-community/async-storage';
 
 import Chart from "../charts/Chart";
+import tmpData from "./tmpData";
 
 
 export default function SearchStock() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(tmpData);
   const [searchText, setSearchText] = useState("AAPL");
-  const url = `https://financialmodelingprep.com/api/v3/historical-price-full/${searchText}?timeseries=5&apikey=ccc99b9c4c2a7d7bce43741669bc3e5f`;
+  const url = ""; //`http://api.marketstack.com/v1/eod?access_key=bcc86dcb3c3285451961a31d598d5e1e&symbols=${searchText}`;
 
   const getData = async () => {
     const result = await fetch(url)
@@ -71,7 +72,7 @@ export default function SearchStock() {
 
       <View style={styles.chart}>
         <Text> {"\n\n"}</Text>
-        <Chart data={data.historical} symbol ={data.symbol} />
+        <Chart data={data.data} symbol={searchText} />
       </View>
 
     </View>
