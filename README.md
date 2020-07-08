@@ -20,8 +20,9 @@ Once stock symbol is typed (e.g. AAPL, AMZN), the graph is displayed
 input a stock symbol -> display a chart
 
 ## Task Lists
-- [x] type stock symbol -> display a chart
-- [ ] add moving average, volume
+- [x] type stock symbol -> display a chart (6/30/20)
+- [x] add moving average, volume (7/8/20)
+- [ ] Bollinger Bands
 - [ ] CSS
 - [ ] other types of charts
 - [ ] display multiple charts
