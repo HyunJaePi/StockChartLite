@@ -15,9 +15,6 @@ npm start
 Once stock symbol is typed (e.g. AAPL, AMZN), the graph is displayed  
 ![Image of screen](https://github.com/HyunJaePi/StockChartLite/tree/master/assets/scrnCapture.jpg)
 
-## Progress
-### (6/28/2020 - 6/30/2020) First goal -- done
-input a stock symbol -> display a chart
 
 ## Task Lists
 - [x] type stock symbol -> display a chart (6/30/20)
