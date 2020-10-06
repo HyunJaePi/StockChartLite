@@ -16,7 +16,7 @@
     "axios": "^0.19.2",
     "echarts": "^4.8.0",
     "echarts-for-react": "^2.0.16",
-    "electron": "^9.1.0",
+    "electron": "^9.3.1",
     "expo": "~38.0.1",
     "expo-status-bar": "^1.0.0",
     "finnhub": "^1.1.7",
